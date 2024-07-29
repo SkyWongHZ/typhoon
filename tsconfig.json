@@ -4,6 +4,7 @@
     "module": "esnext",
     "strict": true,
     "jsx": "react",
+    "typeRoots": ["./node_modules/@types", "./typings"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -11,6 +12,6 @@
     "allowSyntheticDefaultImports": true,
     "outDir": "./dist"
   },
-  "include": ["src"],
+  "include": ["src","typings.d.ts",],
   "exclude": ["node_modules"]
 }

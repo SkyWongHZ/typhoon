@@ -12,7 +12,10 @@ import HomePage from './pages/HomePage';
 import DetailsPage from './pages/DetailsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
+import styles from './index.scss';
+
 const App: React.FC = () => {
+  console.log('styleccc',styles); 
   return (
     <Router>
       <div>
@@ -20,6 +23,7 @@ const App: React.FC = () => {
         <nav>
           <Link to="/">Home</Link> | <Link to="/details">Details</Link>
         </nav>
+        <div className={styles?.red}>11111</div>
 
         {/* 路由配置 */}
         <Routes>
