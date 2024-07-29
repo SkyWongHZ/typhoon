@@ -32,23 +32,6 @@ module.exports = {
         // use表示该文件类型需要调用的loader
         use: ['style-loader', 'css-loader'],
     },
-    {
-      test: /\.scss$/,
-      use: [
-        'style-loader',
-        {
-          loader: 'css-loader',
-          options: {
-            modules: {
-              mode: 'local',
-              localIdentName: '[name]__[local]___[hash:base64:5]',
-              exportLocalsConvention: "camelCase",
-            }
-          }
-        },
-        'sass-loader'
-      ]
-    },
       {
         test: /\.less$/,
         use: [
@@ -57,13 +40,6 @@ module.exports = {
           },
           {
             loader: "css-loader", // 处理CSS文件，支持模块化
-            options: {
-              modules: {
-                mode: 'local', // 可以是 'local', 'global', 或 'pure'
-                localIdentName: '[path][name]__[local]--[hash:base64:5]', // 定义生成的标识名
-                exportGlobals: true, // 导出全局样式作为模块
-              }
-            },
           },
           {
             loader: "less-loader", // 将 Less 编译成 CSS
