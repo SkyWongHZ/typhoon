@@ -32,8 +32,25 @@ module.exports = {
         // use表示该文件类型需要调用的loader
         use: ['style-loader', 'css-loader'],
     },
+    {
+      test: /\.module\.less$/,  // 仅应用于命名为 *.module.less 的文件
+      use: [
+        'style-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            modules: {
+              localIdentName: '[local]-[hash:5]'
+            },
+            importLoaders: 1  // 1 means that it also applies CSS Modules on @imported resources.
+          }
+        },
+        'less-loader'  // 将 LESS 编译成 CSS
+      ]
+    },
       {
         test: /\.less$/,
+        exclude: /\.module\.less$/,  // 排除 *.module.less，避免重复应用规则
         use: [
           {
             loader: "style-loader", // 将CSS注入到DOM中
