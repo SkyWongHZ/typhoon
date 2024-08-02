@@ -2,10 +2,8 @@
 webpack待引入配置
 webpajck可做的操作
 
-设置路径简写 @xxxx
+~~设置路径简写 @xxxx~~
 
-
-替换 scripts 部分中的 react-scripts 为 react-app-rewired
 
 代码拆分  
 加载器loaders
@@ -20,7 +18,7 @@ MiniCssExtractPlugin
 
 依赖包按需加载减少包体积大小
 
-1. 设置别名（Alias）
+~~1. 设置别名（Alias）~~
 在 Webpack 配置中，你可以通过 resolve.alias 来设置模块导入的别名，这样可以简化模块路径，使其更易于管理和引入。
 module.exports = {
   resolve: {
@@ -51,5 +49,8 @@ module.exports = {
 
 React 模块热替换
  开启持久化存储缓存
+
+
+webpack dev server使用
 
 

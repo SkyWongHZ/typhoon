@@ -10,7 +10,11 @@ module.exports = {
     filename: "bundle.js",
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js"], // 添加 .ts 和 .tsx 作为可解析扩展
+    extensions: [".ts", ".tsx", ".js"], 
+    alias: {
+      "@": path.resolve(__dirname, "src/"), 
+      "@images": path.resolve(__dirname, "src/assets/images/") 
+    }
   },
   devServer: {
     historyApiFallback: true ,
@@ -79,6 +83,13 @@ module.exports = {
           },
         ]
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[hash][ext][query]'  // 定义输出的文件名格式
+        }
+      }
     
 
      
