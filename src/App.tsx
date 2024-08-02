@@ -5,17 +5,15 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-// import 'antd/dist/antd.css'; 
+
 
 // 导入你的页面组件
 import HomePage from './pages/HomePage';
 import DetailsPage from './pages/DetailsPage';
 import NotFoundPage from './pages/NotFoundPage';
-
-import  styles  from'./index.module.less';
+import './index.less'
 
 const App: React.FC = () => {
-  console.log(  'styles123',styles);
   return ( 
     <Router>
       <div>
@@ -24,7 +22,7 @@ const App: React.FC = () => {
         <nav>
           <Link to="/">Home</Link> | <Link to="/details">Details</Link>
         </nav>
-        <div className={styles.red}>1111</div>
+        {/* <div className='font'>hello  world</div> */}
         {/* 路由配置 */}
         <Routes>
           <Route path="/" element={<HomePage />} />
