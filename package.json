@@ -21,6 +21,7 @@
   "homepage": "https://github.com/SkyWongHZ/typhoon#readme",
   "dependencies": {
     "antd": "^5.19.3",
+    "axios": "^1.7.4",
     "react": "^18.3.1",
     "react-dev-utils": "^12.0.1",
     "react-dom": "^18.3.1",
