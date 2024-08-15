@@ -2,9 +2,12 @@ import axios from 'axios';
 // import { apiCode, baseApiPrefix } from '@src/public-constants';
 
 interface GetParams {
-    params?: object;
-    signal?: AbortSignal;
+    [key: string]: any;
 }
+
+interface  GetConfig {
+    signal?: AbortSignal;
+}       
 
 interface PostParams {
     [propName: string]: any;
@@ -15,10 +18,11 @@ interface PostConfig {
     signal?: AbortSignal;
 }
 
-const dataUrl = process.env.NODE_ENV === 'development' ? `/apps` : '';
+// const dataUrl = process.env.NODE_ENV === 'development' ? `/apps` : '';
+const dataUrl =  'https://api.cenguigui.cn/api/music';
 
 const instance = axios.create({
-    withCredentials: true,
+    withCredentials: false,
     transformResponse: [
         function (data) {
             try {
@@ -33,8 +37,9 @@ const instance = axios.create({
 instance.interceptors.request.use(
     (config) => {
         if (config.headers) {
-            config.headers.Authorization = `Bearer ${window.__TOKEN__}`;
+            config.headers.Authorization = localStorage.getItem('token');
         }
+        console.log('config:',config)
         return config;
     },
     (error) => {
@@ -55,8 +60,9 @@ instance.interceptors.response.use(
 );
 
 export default {
-    get(url: string, params: GetParams = { signal: undefined }): Promise<any> {
-        return instance.get(dataUrl + url, {params,signal: params.signal})
+    get(url: string, params: GetParams = {},config:GetConfig={}): Promise<any> {
+        console.log('params',params)
+        return instance.get(dataUrl + url, {...config,params})
             .then(response => response.data)
             .catch(error => {
                 console.log(error.message || "An error occurred");
