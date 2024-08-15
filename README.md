@@ -23,3 +23,26 @@ less支持css module写法
 
 
 
+src/
+│
+├── api/                # API 相关的功能，包括 axios 实例
+│   ├── axios.ts       # 自定义 axios 实例
+│   └── services.ts     # API 调用服务
+│
+├── components/         # UI 组件
+│   ├── Button/         # 按钮组件
+│   └── Header/         # 头部组件
+│
+├── assets/             # 静态资源，如图片、样式文件等
+│   ├── images/         # 图片资源
+│   └── styles/         # 全局样式文件
+│
+├── utils/              # 工具函数
+│
+├── store/              # 状态管理，例如 Redux 或 Vuex
+│
+├── views/              # 页面组件
+│
+└── index.jsx          # 应用入口文件
+
+

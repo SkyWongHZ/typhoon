@@ -8,9 +8,9 @@ import {
 
 
 // 导入你的页面组件
-import HomePage from './pages/HomePage';
-import DetailsPage from './pages/DetailsPage';
-import NotFoundPage from './pages/NotFoundPage';
+import HomePage from './views/HomePage';
+import DetailsPage from './views/DetailsPage';
+import NotFoundPage from './views/NotFoundPage';
 import './index.less'
 
 const App: React.FC = () => {

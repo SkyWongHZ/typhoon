@@ -1,17 +1,18 @@
-import axios, { CancelToken } from 'axios';
+import axios from 'axios';
 // import { apiCode, baseApiPrefix } from '@src/public-constants';
 
 interface GetParams {
     params?: object;
-    cancelToken?: CancelToken;
+    signal?: AbortSignal;
 }
 
 interface PostParams {
     [propName: string]: any;
+    
 }
 
 interface PostConfig {
-    cancelToken?: CancelToken;
+    signal?: AbortSignal;
 }
 
 const dataUrl = process.env.NODE_ENV === 'development' ? `/apps` : '';
@@ -54,19 +55,19 @@ instance.interceptors.response.use(
 );
 
 export default {
-    get(url: string, params: GetParams = { cancelToken: null }): Promise<any> {
-        return instance.get(dataUrl + url, params)
+    get(url: string, params: GetParams = { signal: undefined }): Promise<any> {
+        return instance.get(dataUrl + url, {params,signal: params.signal})
             .then(response => response.data)
             .catch(error => {
-                Toast.info(error.message || "An error occurred");
+                console.log(error.message || "An error occurred");
                 return Promise.reject(error);
             });
     },
-    post(url: string, params: PostParams = null, config: PostConfig = { cancelToken: null }): Promise<any> {
-        return instance.post(dataUrl + url, params, config)
+    post(url: string, params: PostParams = {}, config: PostConfig = { signal:undefined }): Promise<any> {
+        return instance.post(dataUrl + url, params, {...config,signal:config.signal})
             .then(response => response.data)
             .catch(error => {
-                Toast.info(error.message || "An error occurred");
+                console.log(error.message || "An error occurred");
                 return Promise.reject(error);
             });
     },
