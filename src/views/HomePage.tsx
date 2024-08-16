@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import axios from '@/utils/axios';
+// import axios from '@/utils/axios';
+import axios from 'fadeaway-axios';
+
 
 function Counter() {
     // 定义两个独立的状态变量
