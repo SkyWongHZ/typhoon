@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import axios from '@/utils/axios';
-import axios from 'fadeaway-axios';
+import axios from   'fadeaway-axios'
 
 
 function Counter() {
