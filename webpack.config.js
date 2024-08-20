@@ -31,7 +31,9 @@ module.exports = {
         use: {
           loader: "ts-loader",
         },
+       
       },
+    
       {
         // test设置需要匹配的文件类型，支持正则
         test: /\.css$/,
