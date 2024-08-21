@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 
 module.exports = {
@@ -85,13 +86,25 @@ module.exports = {
           },
         ]
       },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+       // 处理图片资源
+       {
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
         type: 'asset/resource',
+        include: [path.resolve(__dirname, 'src/assets/images')], // 只处理images目录下的图像文件
         generator: {
           filename: 'images/[hash][ext][query]'  // 定义输出的文件名格式
         }
+      },
+      // 处理字体资源（包括SVG字体）
+      {
+        test: /\.(woff|woff2|ttf|eot|svg)$/,
+        type: 'asset/resource',
+        include: [path.resolve(__dirname, 'src/assets/fonts')], // 只处理fonts目录下的字体文件
+        generator: {
+          filename: 'fonts/[name][ext][query]'  // 自定义输出文件名
+        }
       }
+                         
     
 
      
@@ -100,6 +113,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: "src/assets", to: "assets" },
+      ],
     }),
   ],
 };

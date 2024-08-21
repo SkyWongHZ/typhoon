@@ -9,10 +9,10 @@ Mock
 如何处理更多路由，比如动态路由、嵌套路由、权限路由等？
 如何使用数据流方案？
 如何修改 webpack 配置或切换到 vite 构建模式   
-2024.8待实现功能
-环境标识  env
-图片
-Svg
+
+~~环境标识  env(webpack5版本没必要做)~~
+~~图片~~
+~~Svg~~
 封装fetch
 ~~封装axios~~
 
@@ -20,6 +20,7 @@ Svg
 
 未解决
 less支持css module写法
+字体方案iconfont未被正常引入
 
 
 

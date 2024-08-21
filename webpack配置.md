@@ -53,4 +53,13 @@ React 模块热替换
 
 webpack dev server使用
 
+wenpack5支持svg
+{
+  test: /\.(png|svg|jpg|jpeg|gif)$/i,
+  type: 'asset/resource',
+  generator: {
+    filename: 'images/[hash][ext][query]'  // 定义输出的文件名格式
+  }
+}               
+
 
