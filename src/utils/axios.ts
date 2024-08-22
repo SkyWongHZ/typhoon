@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { message } from 'antd';
 // import { apiCode, baseApiPrefix } from '@src/public-constants';
 
 interface GetParams {
@@ -20,6 +21,7 @@ interface PostConfig {
 
 // const dataUrl = process.env.NODE_ENV === 'development' ? `/apps` : '';
 const dataUrl =  'https://api.cenguigui.cn/api/music';
+// const dataUrl='http://118.178.184.13:8080'
 
 const instance = axios.create({
   withCredentials: false,
@@ -50,11 +52,12 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response) => {
     if (response.data.code && response.data.code !== 200) {
-      console.log(response.data.message);
+      message.info('错误:',response.data.message);
     }
     return response;
   },
   (error) => {
+    console.log('status:',error);
     return Promise.reject(error);
   }
 );

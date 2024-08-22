@@ -5,6 +5,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import './locales/i18n'; 
 
 
 // 导入你的页面组件

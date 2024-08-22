@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-// import axios from '@/utils/axios';
-import axios from   'fadeaway-axios';
+import axios from '@/utils/axios';
+// import axios from   'fadeaway-axios';
 
 
 function Counter() {
@@ -18,13 +18,22 @@ function Counter() {
     const  controller = new AbortController();
     const signal=controller.signal; 
 
-    axios.get('/qianqian_music.php',{params:{msg:'张杰',n:1},signal})
+    axios.get('/qianqian_music.php',{params:{msg1:'张杰',n:1},signal})
       .then(response => {
         console.log(response.data);
       })
       .catch(error => {
         console.error(error);
       });
+
+    //  axios.get('/api/v1/tags',{params:{}})
+    //   .then(response => {
+    //     console.log(response.data);
+    //   })
+    //   .catch(error => {
+    //     console.error(error);
+    //   });
+
   };   
     
 
