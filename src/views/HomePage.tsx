@@ -18,7 +18,7 @@ function Counter() {
     const  controller = new AbortController();
     const signal=controller.signal; 
 
-                            axios.get('/qianqian_music.php',{params:{msg:'张杰',n:1},signal})
+    axios.get('/qianqian_music.php',{params:{msg:'张杰',n:1},signal})
       .then(response => {
         console.log(response.data);
       })
