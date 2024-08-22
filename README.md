@@ -16,14 +16,17 @@ Mock
 封装fetch
 ~~封装axios~~
 ~~增加husky代码提交~~
-
+~~eslint支持~~
 
 
 未解决
 less支持css module写法
 字体方案iconfont未被正常引入
-eslint方案
 
+
+数据流
+https://github.com/pmndrs/
+useContext使用
 
 
 
@@ -49,4 +52,6 @@ src/
 │
 └── index.jsx          # 应用入口文件
 
+
+路由鉴权
 

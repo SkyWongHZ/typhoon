@@ -11,7 +11,7 @@ import {
 import HomePage from './views/HomePage';
 import DetailsPage from './views/DetailsPage';
 import NotFoundPage from './views/NotFoundPage';
-import './index.less'
+import './index.less';
 
 const App: React.FC = () => {
   return ( 
