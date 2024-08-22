@@ -15,12 +15,14 @@ Mock
 ~~Svg~~
 封装fetch
 ~~封装axios~~
+~~增加husky代码提交~~
 
 
 
 未解决
 less支持css module写法
 字体方案iconfont未被正常引入
+eslint方案
 
 
 
