@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from '@/utils/axios';
+import { Link } from 'react-router-dom';
 // import axios from   'fadeaway-axios';
 
 
@@ -39,6 +40,10 @@ function Counter() {
 
   return (
     <div>
+      <div>
+        这是一个home页面
+      </div>
+      <Link to='/details'>Go to  detail</Link>
       <p>Counter 1: {count1}</p>
       <p>Counter 2: {count2}</p>
       <button onClick={handleIncrement}>Increment Both Counters</button>
