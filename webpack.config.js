@@ -40,7 +40,7 @@ module.exports = {
         test: /\.css$/,
         // use表示该文件类型需要调用的loader
         use: ['style-loader', 'css-loader'],
-    },
+      },
       {
         test: /\.less$/,
         exclude: /\.module\.less$/,  // 排除 *.module.less，避免重复应用规则
