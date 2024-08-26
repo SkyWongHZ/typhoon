@@ -3,8 +3,33 @@ import axios from '@/utils/axios';
 import { Link } from 'react-router-dom';
 // import axios from   'fadeaway-axios';
 
+import { Button, Space } from 'antd';
+import { countStore } from '@/store';
+
+
 
 function Counter() {
+  const count = countStore((state: any) => state.count)
+  return <h1>{count} around here ...</h1>
+}
+
+const Controller = () => {
+  const count = countStore((state: any) => state.count)
+
+  const increasePopulation = countStore((state: any) => state.increasePopulation)
+  const removeAllCount = countStore((state: any) => state.removeAllCount)
+
+  return (
+    <Space size="large">
+      <Button type="primary" onClick={increasePopulation}>one up</Button>
+      {count > 0 && <Button type="primary" danger onClick={removeAllCount}>clear</Button>}
+    </Space>
+  )
+
+}
+
+
+function App() {
   // 定义两个独立的状态变量
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
@@ -15,28 +40,31 @@ function Counter() {
     setCount2(count2 + 1);
   };
 
-  const getRequest=()=>{
-    const  controller = new AbortController();
-    const signal=controller.signal; 
+  const getRequest = () => {
+    const controller = new AbortController();
+    const signal = controller.signal;
 
-    axios.get('/qianqian_music.php',{params:{msg1:'张杰',n:1},signal})
+    axios.get('/qianqian_music.php', { params: { msg1: '张杰', n: 1 }, signal })
       .then(response => {
-        console.log(response.data);
+
       })
       .catch(error => {
-        console.error(error);
+
       });
 
     //  axios.get('/api/v1/tags',{params:{}})
     //   .then(response => {
-    //     console.log(response.data);
+    //     
     //   })
     //   .catch(error => {
-    //     console.error(error);
+    //     
     //   });
 
-  };   
-    
+  };
+
+
+
+
 
   return (
     <div>
@@ -48,8 +76,13 @@ function Counter() {
       <p>Counter 2: {count2}</p>
       <button onClick={handleIncrement}>Increment Both Counters</button>
       <button onClick={getRequest}>get请求</button>
+
+      <>
+        <Counter />
+        <Controller />
+      </>
     </div>
   );
 }
 
-export default Counter;
+export default App;
