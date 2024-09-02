@@ -8,27 +8,6 @@ import { countStore } from '@/store';
 
 
 
-function Counter() {
-  const count = countStore((state: any) => state.count)
-  return <h1>{count} around here ...</h1>
-}
-
-const Controller = () => {
-  const count = countStore((state: any) => state.count)
-
-  const increasePopulation = countStore((state: any) => state.increasePopulation)
-  const removeAllCount = countStore((state: any) => state.removeAllCount)
-
-  return (
-    <Space size="large">
-      <Button type="primary" onClick={increasePopulation}>one up</Button>
-      {count > 0 && <Button type="primary" danger onClick={removeAllCount}>clear</Button>}
-    </Space>
-  )
-
-}
-
-
 function App() {
   // 定义两个独立的状态变量
   const [count1, setCount1] = useState(0);
@@ -44,27 +23,27 @@ function App() {
     const controller = new AbortController();
     const signal = controller.signal;
 
-    axios.get('/qianqian_music.php', { params: { msg1: '张杰', n: 1 }, signal })
+    axios.get('/api/v1/user',{ })
       .then(response => {
 
       })
-      .catch(error => {
+    
 
-      });
+  };   
 
-    //  axios.get('/api/v1/tags',{params:{}})
-    //   .then(response => {
-    //     
-    //   })
-    //   .catch(error => {
-    //     
-    //   });
-
-  };
-
-
-
-
+  const getPostRequest=()=>{
+    axios.post('/api/v1/user',{
+      username:'小三',
+      email:'12@gmail.com',
+      password:`12345678`,
+    })
+      .then(response => {
+        console.log(response.data);
+      })
+    
+  
+  }
+    
 
   return (
     <div>
@@ -76,11 +55,7 @@ function App() {
       <p>Counter 2: {count2}</p>
       <button onClick={handleIncrement}>Increment Both Counters</button>
       <button onClick={getRequest}>get请求</button>
-
-      <>
-        <Counter />
-        <Controller />
-      </>
+      <button onClick={getPostRequest}>post请求</button>
     </div>
   );
 }

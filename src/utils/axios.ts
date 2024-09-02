@@ -20,8 +20,9 @@ interface PostConfig {
 }
 
 // const dataUrl = process.env.NODE_ENV === 'development' ? `/apps` : '';
-const dataUrl =  'https://api.cenguigui.cn/api/music';
-// const dataUrl='http://118.178.184.13:8080'
+// const dataUrl =  'https://api.cenguigui.cn/api/music';
+const dataUrl='http://118.178.184.13:8080'
+// const dataUrl='http://127.0.0.1:8080'
 
 const instance = axios.create({
   withCredentials: false,
@@ -38,13 +39,21 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
+    
     if (config.headers) {
-      config.headers.Authorization = localStorage.getItem('token');
+      // const token=`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoiMjEyMzJmMjk3YTU3YTVhNzQzODk0YTBlNGE4MDFmYzMiLCJhcHBfc2VjcmV0IjoiZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UiLCJleHAiOjE3MjUyMDc2NzQsImlzcyI6ImJsb2ctc2VydmljZSJ9.rDX3HZ90qkxN1eYSYvD84Hz6XAOuL-R2ETgaindqBaU`
+      const token=`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoiMjEyMzJmMjk3YTU3YTVhNzQzODk0YTBlNGE4MDFmYzMiLCJhcHBfc2VjcmV0IjoiZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UiLCJleHAiOjE3MjUyNzcyMTQsImlzcyI6ImJsb2ctc2VydmljZSJ9.OAGyKf3l-cEnwlT7Ncd3C5mqJxhHH7s1MvgdhJh0CYI`
+      config.headers.Authorization = token;
     }
-    console.log('config:',config);
+    
     return config;
   },
   (error) => {
+    
+    if (error.response) {
+      
+      
+    }
     return Promise.reject(error);
   }
 );
@@ -57,18 +66,18 @@ instance.interceptors.response.use(
     return response;
   },
   (error) => {
-    console.log('status:',error);
+    
     return Promise.reject(error);
   }
 );
 
 export default {
   get(url: string, params: GetParams = {},config:GetConfig={}): Promise<any> {
-    console.log('params',params);
-    return instance.get(dataUrl + url, {...config,params})
+    
+    return instance.get(dataUrl + url, {...config,...params} )
       .then(response => response.data)
       .catch(error => {
-        console.log(error.message || "An error occurred");
+        
         return Promise.reject(error);
       });
   },
@@ -76,7 +85,7 @@ export default {
     return instance.post(dataUrl + url, params, {...config,signal:config.signal})
       .then(response => response.data)
       .catch(error => {
-        console.log(error.message || "An error occurred");
+        
         return Promise.reject(error);
       });
   },
